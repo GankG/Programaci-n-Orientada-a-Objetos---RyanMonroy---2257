@@ -5,6 +5,7 @@
  */
 package mx.unam.aragon.fes.gui;
 
+import javax.swing.JOptionPane;
 import mx.unam.aragon.fes.Empleado;
 
 /**
@@ -381,6 +382,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
         emp.setDepartamento(jTextField9.getText());
         emp.setSueldo(Float.parseFloat(jTextField10.getText().toString()));
         emp.setHorasExtra(Integer.parseInt(jSpinner2.getValue().toString()));
+        int confirmar = JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas guardar estos datos?");
         
         this.limpiarFormulario();
     }//GEN-LAST:event_jButtonResetMouseClicked
