@@ -375,12 +375,13 @@ public class AltaEmpleado extends javax.swing.JFrame {
         emp.getDomicilio().setCalle(jTextField5.getText());
         emp.getDomicilio().setNumero(jTextField6.getText());
         emp.getDomicilio().setColonia(jTextField7.getText());
-        emp.getDomicilio().setDelegacion(jTextField7.getText());
-        emp.getDomicilio().setCp(jTextField7.getText());
+        emp.getDomicilio().setDelegacion(jTextField8.getText());
+        emp.getDomicilio().setEstado(jTextField9.getText());
+        emp.getDomicilio().setCp(jTextField10.getText());
         
-        emp.setNumeroEmpleado(Integer.parseInt(jTextField8.getText().toString()));
-        emp.setDepartamento(jTextField9.getText());
-        emp.setSueldo(Float.parseFloat(jTextField10.getText().toString()));
+        emp.setNumeroEmpleado(Integer.parseInt(jTextField11.getText().toString()));
+        emp.setDepartamento(jTextField12.getText());
+        emp.setSueldo(Float.parseFloat(jTextField13.getText().toString()));
         emp.setHorasExtra(Integer.parseInt(jSpinner2.getValue().toString()));
         int confirmar = JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas guardar estos datos?");
         
