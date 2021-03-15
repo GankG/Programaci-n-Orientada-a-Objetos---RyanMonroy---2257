@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package mx.unam.aragon.fes;
-
+import java.io.Serializable;
 /**
  *
  * @author Rsin
  */
-public class Persona {
+public class Persona implements Serializable{
     private String nombre;
     private String apPaterno;
     private String apMaterno;

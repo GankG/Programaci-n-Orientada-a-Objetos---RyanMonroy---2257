@@ -6,9 +6,11 @@
 package mx.unam.aragon.fes.gui;
 
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import mx.unam.aragon.fes.Direccion;
 import mx.unam.aragon.fes.Empleado;
+import mx.unam.aragon.fes.persistencia.ArchivoEmpleado;
 
 /**
  *
@@ -24,7 +26,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
         lista = new ArrayList<Empleado>();
     }
 
-     private void limpiarFormulario()
+     /*private void limpiarFormulario()
     {
         this.jTextField1.setText("");
         this.jTextField2.setText("");
@@ -43,7 +45,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
         this.jSpinner1.setValue(0);
         this.jSpinner2.setValue(0);
         
-    }
+    }¨*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -203,7 +205,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -232,7 +234,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(24, 24, 24)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65))
         );
@@ -267,7 +269,7 @@ public class AltaEmpleado extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -300,6 +302,11 @@ public class AltaEmpleado extends javax.swing.JFrame {
         jTabbedPane1.addTab("Empresariales", jPanel4);
 
         jButton1.setText("Guardar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -307,6 +314,11 @@ public class AltaEmpleado extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cargar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText(">>>");
 
@@ -372,30 +384,31 @@ public class AltaEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonResetMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
+        System.out.println("Nuevo empleado!!!");
         this.limpiarFormulario();
+        this.jButtonSend.setEnabled(true);  
     }//GEN-LAST:event_jButtonResetMouseClicked
 
     private void jButtonSendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSendMouseClicked
         // TODO add your handling code here:
-        System.out.println("Nuevo empleado!");
         Empleado emp = new Empleado();
         emp.setNombre(this.jTextField1.getText());
         emp.setApPaterno(this.jTextField2.getText());
         emp.setApMaterno(this.jTextField3.getText());
-        emp.setEdad(Integer.parseInt(this.jSpinner1.getValue().toString()));
+        emp.setEdad(Integer.parseInt(String.valueOf(this.jSpinner1.getValue())));
         emp.setCurp(this.jTextField4.getText());
         emp.setDomicilio(new Direccion());
-        emp.getDomicilio().setCalle(jTextField5.getText());
-        emp.getDomicilio().setNumero(jTextField6.getText());
-        emp.getDomicilio().setColonia(jTextField7.getText());
-        emp.getDomicilio().setDelegacion(jTextField8.getText());
-        emp.getDomicilio().setEstado(jTextField9.getText());
-        emp.getDomicilio().setCp(jTextField10.getText());
-        emp.setNumeroEmpleado(Integer.parseInt(jTextField11.getText()));
-        emp.setDepartamento(jTextField12.getText());
-        emp.setSueldo(Float.parseFloat(jTextField13.getText()));
-        emp.setHorasExtra(Integer.parseInt(jSpinner2.getValue().toString()));
+        emp.getDomicilio().setCalle(this.jTextField5.getText());
+        emp.getDomicilio().setNumero(this.jTextField6.getText());
+        emp.getDomicilio().setColonia(this.jTextField7.getText());
+        emp.getDomicilio().setDelegacion(this.jTextField8.getText());
+        emp.getDomicilio().setEstado(this.jTextField9.getText());
+        emp.getDomicilio().setCp(this.jTextField10.getText());
+        emp.setNumeroEmpleado(Integer.parseInt(this.jTextField11.getText()));
+        emp.setDepartamento(this.jTextField12.getText());
+        emp.setSueldo(Float.parseFloat(this.jTextField13.getText()));
+        emp.setHorasExtra(Integer.parseInt(String.valueOf(this.jSpinner2.getValue())));
         int confirmar = JOptionPane.showConfirmDialog(this, "¿Estás seguro que deseas guardar estos datos?");
         //subirlo a memoria
         if(confirmar == 0)
@@ -412,7 +425,85 @@ public class AltaEmpleado extends javax.swing.JFrame {
         jButtonSend.setEnabled(false);
     }//GEN-LAST:event_jButtonSendMouseClicked
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        ArchivoEmpleado persistencia = new ArchivoEmpleado();
+        JFileChooser jfc = new JFileChooser();
+        jfc.showSaveDialog(this);
+        String archivo = jfc.getSelectedFile().getAbsolutePath();
+        System.out.println("Ruta Seleccionada es: " + archivo);
+        persistencia.setArchivo(archivo);
+        try {
+            persistencia.guardarEmpleados(lista);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        int respuesta = JOptionPane.showConfirmDialog(this , "Esta accion borrará los datos actuales. ¿ Esta seguro de continuar?");
+        if(respuesta == 0 ){//Constantes de clases
+            //leer archivos
+            //subir al arraylist actual
+            //el primer elemento del array list se ponfdra en el formulario
+        ArchivoEmpleado persistencia = new ArchivoEmpleado();
+        JFileChooser jfc = new JFileChooser();
+        jfc.showOpenDialog( this );
+        persistencia.setArchivo(jfc.getSelectedFile().getAbsolutePath());
+        this.lista = persistencia.leerEmpleados();
+        this.limpiarFormulario();
+        this.llenarFormulario(0);
+        
+        }else{
+            
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
    
+    private void llenarFormulario(int indice){
+            if (lista.size() > 0){
+                Empleado e = lista.get(indice);
+                
+                this.jTextField1.setText(e.getNombre());
+                this.jTextField2.setText(e.getApPaterno());
+                this.jTextField3.setText(e.getApMaterno());
+                this.jSpinner1.setValue(e.getEdad());
+                this.jTextField4.setText(e.getCurp());
+                this.jTextField5.setText(e.getDomicilio().getCalle());
+                this.jTextField6.setText(e.getDomicilio().getNumero());
+                this.jTextField7.setText(e.getDomicilio().getColonia());
+                this.jTextField8.setText(e.getDomicilio().getDelegacion());
+                this.jTextField9.setText(e.getDomicilio().getEstado());
+                this.jTextField10.setText(e.getDomicilio().getCp());
+                
+                this.jTextField11.setText(String.valueOf(e.getNumeroEmpleado()));
+                this.jTextField12.setText(e.getDepartamento());
+                this.jTextField13.setText(String.valueOf(e.getSueldo()));
+                this.jSpinner2.setValue(e.getHorasExtra());
+            }
+    }
+    
+    private void limpiarFormulario(){
+      this.jTextField1.setText("");
+      this.jTextField2.setText("");
+      this.jTextField3.setText("");
+      this.jSpinner1.setValue(0);
+      this.jTextField4.setText("");
+      this.jTextField5.setText("");
+      this.jTextField6.setText("");
+      this.jTextField7.setText("");
+      this.jTextField8.setText("");
+      this.jTextField9.setText("");
+      this.jTextField9.setColumns(10);
+      this.jTextField10.setText("0");
+      this.jTextField10.setColumns(10);
+      this.jTextField11.setText("");
+      this.jTextField12.setText("0.0");
+      this.jSpinner2.setValue(0);
+      this.jTextField13.setText("");   
+    }
     /**
      * @param args the command line arguments
      */

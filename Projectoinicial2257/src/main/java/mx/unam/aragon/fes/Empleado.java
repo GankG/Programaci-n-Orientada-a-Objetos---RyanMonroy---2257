@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package mx.unam.aragon.fes;
+import java.io.Serializable;
 
 /**
  *
  * @author Rsin
  */
-public class Empleado extends Persona{
+public class Empleado extends Persona implements Serializable{
     private int numeroEmpleado;
     private String departamento;
     private float sueldo;

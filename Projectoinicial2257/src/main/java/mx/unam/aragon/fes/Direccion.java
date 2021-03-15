@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package mx.unam.aragon.fes;
+import java.io.Serializable;
 
 /**
  *
  * @author Rsin
  */
-public class Direccion {
+public class Direccion implements Serializable{
     private String calle;
     private String numero;
     private String colonia;
