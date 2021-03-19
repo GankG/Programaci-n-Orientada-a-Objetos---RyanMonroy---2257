@@ -35,6 +35,7 @@ public class Automovil {
     }
 
     public void setColor(Color color) {
+        System.out.println("Metiendo el auto al taller de pintura...");
         this.color = color;
     }
 
