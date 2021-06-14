@@ -87,6 +87,11 @@ public class SmartPhone {
 
     }
 
+    /**
+     * 
+     * @param numeroDestino
+     * @return int que representa el número de minutos que duró la llamada.
+     */
     public int llamar(int numeroDestino){
         System.out.println("Llamando al numero " + numeroDestino );
         return 60;

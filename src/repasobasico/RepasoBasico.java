@@ -5,6 +5,8 @@
  */
 package repasobasico;
 import ico.fes.dispositivos.SmartPhone;
+import ico.fes.inegi.EncuestadorInegi;
+import java.util.HashSet;
 
 /**
  *
@@ -27,7 +29,7 @@ public class RepasoBasico {
         System.out.println(cel4);
         
         //Uso de métodos de acceso.
-        cel1.setModelo("Galazy Note 18");
+        cel1.setModelo("Galaxy Note 18");
         System.out.println(cel1);
         System.out.println("Marca del cel: "+cel1.getMarca());
         
@@ -36,6 +38,18 @@ public class RepasoBasico {
         cel1.setTamanio(626.5f);
         cel1.setTamanio(4.5f);
         System.out.println("El tamaño del cel: "+cel1.getTamanio());
+        
+        //Ejemplo
+        EncuestadorInegi enc1= new EncuestadorInegi();
+        enc1.setDispositivo(cel2);
+        System.out.println(enc1.getDispositivo()+"\n");
+        //Ejercicio - Tarea - Cambia el color del dispositivo
+        enc1.setNombre("Juan");
+        enc1.getDispositivo().setColor("Rojo");
+        System.out.println(enc1.getDispositivo()+"\n");
+        
+        System.out.println(enc1.toString());
+        
     }
     
 }
