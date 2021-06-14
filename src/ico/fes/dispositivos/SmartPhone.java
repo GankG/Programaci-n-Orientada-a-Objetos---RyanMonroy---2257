@@ -28,6 +28,12 @@ public class SmartPhone {
     public SmartPhone(String m) {
         this.marca = m;
     }
+    
+    public SmartPhone(String m, String mod)
+    {
+        this.marca = m;
+        this.modelo = mod;
+    }
 
     public String getMarca() {
         return marca;
@@ -58,7 +64,16 @@ public class SmartPhone {
     }
 
     public void setTamanio(float tamanio) {
-        this.tamanio = tamanio;
+        System.out.println("Estableciendo el nuevo valor para el tamaño.");
+        if(tamanio>7.2f)
+        {
+            System.out.println("Ese tamaño no corresponde al dominio del problema.");
+        }
+        else
+        {
+            this.tamanio = tamanio;
+        }
+        
     }
 
     @Override
